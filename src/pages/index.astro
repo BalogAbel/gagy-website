@@ -1,17 +1,93 @@
 ---
-
+import Base from "../layouts/Base.astro";
+import Placeholder from "../components/Placeholder.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Kezdőlap"
+  description="Gödöllői Agapé Gyülekezet — kicsi, befogadó keresztény közösség Gödöllőn."
+>
+  <section class="hero">
+    <h1>Gödöllői Agapé Gyülekezet</h1>
+    <p>
+      A Biblia által bemutatott keresztény életmodellt szeretnénk élni és megosztani –
+      szóban, példamutató életformával és gyakorlati segítséggel, Gödöllőn és környékén.
+    </p>
+    <p>
+      Kicsi, befogadó közösség vagyunk, ahol minden korosztály otthon érezheti magát.
+    </p>
+  </section>
+
+  <section class="service-time">
+    <p><strong>Vasárnaponként 9:30-tól várunk szeretettel.</strong></p>
+    <p>Cím: Gödöllő, Peres u. 54</p>
+  </section>
+
+  <section class="cards">
+    <a class="card" href="/bemutatkozas">
+      <h2>Ismerj meg minket</h2>
+      <p>Tudj meg többet arról, kik vagyunk és mit hiszünk fontosnak.</p>
+    </a>
+    <a class="card" href="/royal-rangers">
+      <h2>Gyermekeknek, fiataloknak</h2>
+      <p>Royal Rangers Gödöllő — közösség az 5–17 éves korosztálynak.</p>
+    </a>
+    <a class="card" href="/kapcsolat">
+      <h2>Gyere el, keress minket</h2>
+      <p>Elérhetőségek és útvonal a gyülekezethez.</p>
+    </a>
+  </section>
+
+  <section class="hero-image">
+    <Placeholder caption="A közösség együtt" ratio="16:9" alt="A közösség együtt" />
+  </section>
+</Base>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 1rem 0 2rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .service-time {
+    background: #eef3ee;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .service-time p {
+    margin: 0.25rem 0;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .card {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #e5e0d8;
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s ease;
+  }
+  .card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+  .card h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: #3a6b52;
+  }
+  .card p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+</style>
