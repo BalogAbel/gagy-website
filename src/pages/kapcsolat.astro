@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import Placeholder from "../components/Placeholder.astro";
+
+// TODO: replace with the real church email before going live.
+const CONTACT_EMAIL = "info@example.hu";
+// TODO: replace with the real church phone number before going live.
+const CONTACT_PHONE = "+36 XX XXX XXXX";
+---
+
+<Base
+  title="Kapcsolat"
+  description="Elérhetőségek és útvonal a Gödöllői Agapé Gyülekezethez."
+>
+  <h1>Kapcsolat</h1>
+
+  <section class="contact-info">
+    <h2>Gödöllői Agapé Gyülekezet</h2>
+    <p>Cím: Gödöllő, Peres u. 54</p>
+    <p>E-mail: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+    <p>Telefon: <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>{CONTACT_PHONE}</a></p>
+    <p>Vasárnapi alkalom: 9:30-tól</p>
+  </section>
+
+  <section class="map">
+    <iframe
+      title="Térkép: Gödöllő, Peres u. 54"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=19.3480%2C47.5960%2C19.3620%2C47.6040&layer=mapnik&marker=47.6000%2C19.3550"
+      style="border: 0;"
+      loading="lazy"
+    ></iframe>
+    <p class="map-note">
+      <a href="https://www.openstreetmap.org/?mlat=47.6000&mlon=19.3550#map=16/47.6000/19.3550" target="_blank" rel="noopener noreferrer">
+        Nagyobb térkép megtekintése
+      </a>
+    </p>
+  </section>
+
+  <Placeholder caption="A gyülekezet épülete" ratio="4:3" alt="A gyülekezet épülete" />
+</Base>
+
+<style>
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+  .contact-info {
+    margin-bottom: 2rem;
+  }
+  .contact-info p {
+    margin: 0.4rem 0;
+  }
+  .map {
+    margin-bottom: 2rem;
+  }
+  .map iframe {
+    width: 100%;
+    height: 320px;
+    border-radius: 8px;
+  }
+  .map-note {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+</style>
