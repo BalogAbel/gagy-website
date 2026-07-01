@@ -17,10 +17,10 @@ const MAP_QUERY = "G%C3%B6d%C3%B6ll%C5%91%2C%20Peres%20u.%2054";
 
   <section class="contact-info">
     <h2>Gödöllői Agapé Gyülekezet</h2>
-    <p>Cím: Gödöllő, Peres u. 54</p>
-    <p>E-mail: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
-    <p>Telefon: <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>{CONTACT_PHONE}</a></p>
-    <p>Vasárnap 9:30</p>
+    <p><span aria-hidden="true">📍</span> Gödöllő, Peres u. 54</p>
+    <p><span aria-hidden="true">✉️</span> <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+    <p><span aria-hidden="true">📞</span> <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>{CONTACT_PHONE}</a></p>
+    <p><span aria-hidden="true">🕤</span> Vasárnap 9:30</p>
   </section>
 
   <section class="first-visit">
@@ -54,16 +54,25 @@ const MAP_QUERY = "G%C3%B6d%C3%B6ll%C5%91%2C%20Peres%20u.%2054";
     margin-bottom: 1.5rem;
   }
   .contact-info {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
     margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .contact-info h2 {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    margin-top: 0;
   }
   .first-visit {
-    background: #eef3ee;
+    background: var(--color-accent-tint);
     border-radius: 12px;
     margin-bottom: 2rem;
     padding: 1.25rem 1.5rem;
   }
   .first-visit h2 {
-    color: #3a6b52;
+    color: var(--color-accent);
     font-size: 1.25rem;
     margin-top: 0;
   }

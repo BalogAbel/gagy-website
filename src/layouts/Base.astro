@@ -56,27 +56,55 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     </main>
 
     <footer class="site-footer">
-      <p>Gödöllői Agapé Gyülekezet</p>
-      <p>Gödöllő, Peres u. 54</p>
-      <p>&copy; {new Date().getFullYear()} Gödöllői Agapé Gyülekezet</p>
+      <p class="footer-name">Gödöllői Agapé Gyülekezet</p>
+      <p class="footer-line"><span aria-hidden="true">📍</span> Gödöllő, Peres u. 54</p>
+      <p class="footer-line"><span aria-hidden="true">🕤</span> Vasárnap 9:30</p>
+      <p class="footer-copy">&copy; {new Date().getFullYear()} Gödöllői Agapé Gyülekezet</p>
     </footer>
   </body>
 </html>
 
 <style>
+  :global(:root) {
+    --color-text: #2b3a34;
+    --color-bg: #fdfbf6;
+    --color-surface: #ffffff;
+    --color-border: #e9e2d4;
+    --color-accent: #2f9463;
+    --color-accent-dark: #1f7a4f;
+    --color-accent-soft: #bdecd3;
+    --color-accent-tint: #eafaf1;
+    --color-warm: #f4a340;
+    --color-warm-tint: #fef1e0;
+    --color-footer-bg: #1e3129;
+    --color-footer-text: #eef6f0;
+  }
   :global(*) {
     box-sizing: border-box;
+  }
+  :global(main a) {
+    color: var(--color-accent-dark);
+  }
+  :global(main a:hover) {
+    color: var(--color-accent);
+  }
+  :global(a:focus-visible),
+  :global(button:focus-visible),
+  :global(input:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
   :global(body) {
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    color: #2f3b35;
-    background: #fbfaf7;
+    color: var(--color-text);
+    background: var(--color-bg);
     line-height: 1.6;
   }
   .site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e0d8;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
   }
   .header-inner {
     max-width: 960px;
@@ -94,7 +122,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     gap: 0.5rem;
     font-weight: 700;
     text-decoration: none;
-    color: #2f3b35;
+    color: var(--color-text);
     font-size: 1.1rem;
   }
   .logo-placeholder {
@@ -104,8 +132,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background: #cfe0d5;
-    color: #3a6b52;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
   }
   .nav-toggle {
     display: none;
@@ -125,7 +153,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     left: 0;
     width: 100%;
     height: 2px;
-    background: #2f3b35;
+    background: var(--color-text);
   }
   .nav-toggle-label span {
     top: 50%;
@@ -145,12 +173,12 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   }
   .main-nav a {
     text-decoration: none;
-    color: #2f3b35;
+    color: var(--color-text);
     font-weight: 500;
   }
   .main-nav a[aria-current="page"] {
-    color: #3a6b52;
-    border-bottom: 2px solid #3a6b52;
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
   }
   main {
     max-width: 960px;
@@ -158,15 +186,25 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     padding: 2rem 1.5rem 4rem;
   }
   .site-footer {
-    background: #2f3b35;
-    color: #f0efe9;
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem 2rem;
     margin-top: 3rem;
   }
-  .site-footer p {
-    margin: 0.25rem 0;
+  .footer-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0 0 0.75rem;
+  }
+  .footer-line {
+    margin: 0.35rem 0;
     font-size: 0.9rem;
+  }
+  .footer-copy {
+    margin: 1.25rem 0 0;
+    font-size: 0.8rem;
+    opacity: 0.75;
   }
 
   @media (max-width: 640px) {

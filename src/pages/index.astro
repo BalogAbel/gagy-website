@@ -25,14 +25,17 @@ import Placeholder from "../components/Placeholder.astro";
 
   <section class="cards">
     <a class="card" href="/bemutatkozas">
+      <span class="card-icon" aria-hidden="true">📖</span>
       <h2>Ismerj meg minket</h2>
       <p>Tudj meg többet arról, kik vagyunk és mit hiszünk fontosnak.</p>
     </a>
     <a class="card" href="/royal-rangers">
+      <span class="card-icon card-icon-warm" aria-hidden="true">🌟</span>
       <h2>Gyermekeknek, fiataloknak</h2>
       <p>Royal Rangers Gödöllő — közösség az 5–17 éves korosztálynak.</p>
     </a>
     <a class="card" href="/kapcsolat">
+      <span class="card-icon" aria-hidden="true">📍</span>
       <h2>Gyere el, keress minket</h2>
       <p>Elérhetőségek és útvonal a gyülekezethez.</p>
     </a>
@@ -46,14 +49,23 @@ import Placeholder from "../components/Placeholder.astro";
 <style>
   .hero {
     text-align: center;
-    padding: 1rem 0 2rem;
+    padding: 2.5rem 1.5rem 3rem;
+    margin: -2rem -1.5rem 2rem;
+    background: radial-gradient(ellipse at top, var(--color-accent-tint), var(--color-bg) 70%);
+    border-bottom: 1px solid var(--color-border);
   }
   .hero h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .hero p {
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   .service-time {
-    background: #eef3ee;
+    background: var(--color-accent-tint);
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
     text-align: center;
@@ -70,21 +82,38 @@ import Placeholder from "../components/Placeholder.astro";
   }
   .card {
     display: block;
-    background: #ffffff;
-    border: 1px solid #e5e0d8;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent-soft);
     border-radius: 12px;
     padding: 1.25rem;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.15s ease;
+    transition: box-shadow 0.15s ease, transform 0.15s ease, border-top-color 0.15s ease;
   }
   .card:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-top-color: var(--color-accent);
+  }
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-accent-tint);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon-warm {
+    background: var(--color-warm-tint);
   }
   .card h2 {
     font-size: 1.1rem;
     margin: 0 0 0.5rem;
-    color: #3a6b52;
+    color: var(--color-accent);
   }
   .card p {
     margin: 0;
