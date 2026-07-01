@@ -6,6 +6,7 @@ import Placeholder from "../components/Placeholder.astro";
 const CONTACT_EMAIL = "info@example.hu";
 // TODO: replace with the real church phone number before going live.
 const CONTACT_PHONE = "+36 XX XXX XXXX";
+const MAP_QUERY = "G%C3%B6d%C3%B6ll%C5%91%2C%20Peres%20u.%2054";
 ---
 
 <Base
@@ -19,19 +20,28 @@ const CONTACT_PHONE = "+36 XX XXX XXXX";
     <p>Cím: Gödöllő, Peres u. 54</p>
     <p>E-mail: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
     <p>Telefon: <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>{CONTACT_PHONE}</a></p>
-    <p>Vasárnapi alkalom: 9:30-tól</p>
+    <p>Vasárnap 9:30</p>
+  </section>
+
+  <section class="first-visit">
+    <h2>Mire számíthatok, ha először jövök?</h2>
+    <p>
+      Az alkalmaink nyitottak, bárkit szeretettel várunk, és nem szükséges előzetesen jelentkezni.
+      Vasárnap 9:30-ra egyszerűen el lehet jönni.
+    </p>
   </section>
 
   <section class="map">
     <iframe
-      title="Térkép: Gödöllő, Peres u. 54"
-      src="https://www.openstreetmap.org/export/embed.html?bbox=19.3480%2C47.5960%2C19.3620%2C47.6040&layer=mapnik&marker=47.6000%2C19.3550"
+      title="Google térkép: Gödöllő, Peres u. 54"
+      src={`https://www.google.com/maps?q=${MAP_QUERY}&output=embed`}
       style="border: 0;"
       loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
     ></iframe>
     <p class="map-note">
-      <a href="https://www.openstreetmap.org/?mlat=47.6000&mlon=19.3550#map=16/47.6000/19.3550" target="_blank" rel="noopener noreferrer">
-        Nagyobb térkép megtekintése
+      <a href={`https://www.google.com/maps/search/?api=1&query=${MAP_QUERY}`} target="_blank" rel="noopener noreferrer">
+        Megnyitás Google Mapsben
       </a>
     </p>
   </section>
@@ -45,6 +55,17 @@ const CONTACT_PHONE = "+36 XX XXX XXXX";
   }
   .contact-info {
     margin-bottom: 2rem;
+  }
+  .first-visit {
+    background: #eef3ee;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .first-visit h2 {
+    color: #3a6b52;
+    font-size: 1.25rem;
+    margin-top: 0;
   }
   .contact-info p {
     margin: 0.4rem 0;
