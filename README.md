@@ -1,43 +1,41 @@
-# Astro Starter Kit: Minimal
+# Gödöllői Agapé Gyülekezet — weboldal (POC)
 
-```sh
-npm create astro@latest -- --template minimal
+Statikus, Astro-alapú bemutatkozó weboldal. Nincs backend, nincs CMS, nincs
+adatbázis — a `dist/` mappába épített statikus fájlokat szolgáljuk ki.
+
+## Fejlesztés
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A dev szerver alapértelmezetten a `http://localhost:4321` címen fut.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+A kimenet a `dist/` mappába kerül.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Telepítés Azure Static Web Apps-re
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Hozz létre egy Azure Static Web App erőforrást az Azure Portálon, és kapcsold
+   össze a GitHub repóval. Az Azure automatikusan létrehoz egy GitHub Actions
+   workflow fájlt (`.github/workflows/azure-static-web-apps-<random>.yml`).
+2. A workflow generálásakor add meg:
+   - **App location:** `/`
+   - **Output location:** `dist`
+   - **Api location:** hagyd üresen (nincs API/backend).
+3. A `staticwebapp.config.json` a repó gyökerében található, az Azure automatikusan
+   felismeri (404 fallback, `index.html` alapértelmezett dokumentum).
+4. Minden `main` branch-re történő push automatikusan újra deployolja az oldalt.
 
-## 🧞 Commands
+## Placeholder tartalmak
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- A `src/pages/kapcsolat.astro` fájlban az e-mail cím és telefonszám placeholder,
+  `TODO` kommenttel jelölve — valós adatokra kell cserélni éles indulás előtt.
+- Minden kép helyén `src/components/Placeholder.astro` SVG-t renderel; valós fotók
+  becsatolásakor ez cserélhető `<img>`-re.
