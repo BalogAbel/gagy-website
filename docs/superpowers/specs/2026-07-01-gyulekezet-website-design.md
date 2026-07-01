@@ -1,21 +1,21 @@
-# Gödöllői Agapé Gyülekezet weboldal — Design (POC)
+# Gödöllői Agapé Gyülekezet Website — Design (POC)
 
-## Cél
-Statikus, telepíthető bemutatkozó oldal (POC fázis), Astro-val, Azure Static Web Apps hostinghoz. Nincs CMS, backend, adatbázis, űrlap-feldolgozás. Tartalom magyar, a `CLAUDE.md`-ben rögzített szöveg szó szerint.
+## Goal
+Static, deployable presentation site (POC phase), built with Astro, hosted on Azure Static Web Apps. No CMS, no backend, no database, no form processing. Content is Hungarian, taken verbatim from `CLAUDE.md`.
 
-## Technológia
-- Astro (legfrissebb stabil), SSG kimenet `dist/`.
-- Sima CSS, scoped stílusok `.astro` fájlokban. Nincs Tailwind vagy más UI-keretrendszer.
-- `lang="hu"`, szemantikus HTML, mobil-first reszponzív, alap akadálymentesség (alt szövegek, kontraszt).
+## Tech stack
+- Astro (latest stable), SSG output to `dist/`.
+- Plain CSS, scoped styles in `.astro` files. No Tailwind or other UI framework.
+- `lang="hu"`, semantic HTML, mobile-first responsive, baseline accessibility (alt text, contrast).
 
-## Struktúra
+## Structure
 
 ```
 src/
   layouts/
-    Base.astro          # közös fejléc/lábléc, nav, <head>/meta
+    Base.astro          # shared header/footer, nav, <head>/meta
   components/
-    Placeholder.astro   # SVG kép-placeholder (caption, aspectRatio prop)
+    Placeholder.astro   # SVG image placeholder (caption, aspectRatio prop)
   pages/
     index.astro
     bemutatkozas.astro
@@ -26,38 +26,38 @@ staticwebapp.config.json
 README.md
 ```
 
-## Komponensek
+## Components
 
 **Base.astro** (layout)
-- Fejléc: gyülekezet neve + logó placeholder + nav (Kezdőlap · Bemutatkozás · Royal Rangers · Kapcsolat), mobilon összecsukható menü.
-- Lábléc: gyülekezet neve, cím (Gödöllő, Peres u. 54), copyright.
-- Props: `title` (oldal `<title>`-hez), `description` (meta).
+- Header: church name + logo placeholder + nav (Kezdőlap · Bemutatkozás · Royal Rangers · Kapcsolat), collapsible menu on mobile.
+- Footer: church name, address (Gödöllő, Peres u. 54), copyright.
+- Props: `title` (page `<title>`), `description` (meta).
 
 **Placeholder.astro**
 - Props: `caption: string`, `ratio: "16:9" | "4:3"`, `alt: string`.
-- Inline SVG: semleges háttérszín téglalap + középre igazított felirat, helyes méretarány, `alt` a körülölelő `<figure>`/`<img>`-szerű szemantikán vagy `role="img"` + `aria-label`.
+- Inline SVG: neutral background rect + centered caption text, correct aspect ratio, `alt` exposed via surrounding semantics or `role="img"` + `aria-label`.
 
-## Oldalak — tartalom
-A `CLAUDE.md`-ben szó szerint megadott magyar szöveg kerül be, változtatás nélkül, beleértve a szándékos 7–17 / 5–17 eltérést (bemutatkozás vs. royal-rangers oldal) — ezt NEM egységesítjük.
+## Pages — content
+Hungarian text given verbatim in `CLAUDE.md` goes in unchanged, including the intentional 7–17 / 5–17 age-range discrepancy (bemutatkozas vs. royal-rangers page) — this is NOT to be unified.
 
-1. **index.astro** — hero szöveg, kiemelt alkalom-blokk (vasárnap 9:30, cím), 3 kártya (bemutatkozás/royal-rangers/kapcsolat linkekkel), közösségi kép placeholder (16:9).
-2. **bemutatkozas.astro** — 5 szekció (Kik vagyunk / Célunk / Az evangélium hirdetése / Szolgálat embertársaink felé / Gyermekek és fiatalok), áthidaló link a Royal Rangers oldalra, kép placeholder (4:3).
-3. **royal-rangers.astro** — Bevezető / Mit adunk / Korosztályok (általános megfogalmazás, nincs kitalált korosztály-elnevezés) / Szülőknek (link Kapcsolatra), kép placeholder (4:3).
-4. **kapcsolat.astro** — cím, e-mail és telefon TODO-placeholder (kód-kommenttel jelölve), vasárnapi alkalom, OSM `<iframe>` embed API-kulcs nélkül a Peres u. 54-hez, épület kép placeholder (4:3).
+1. **index.astro** — hero text, highlighted service-time block (Sunday 9:30, address), 3 cards (bemutatkozas/royal-rangers/kapcsolat links), community photo placeholder (16:9).
+2. **bemutatkozas.astro** — 5 sections (Kik vagyunk / Célunk / Az evangélium hirdetése / Szolgálat embertársaink felé / Gyermekek és fiatalok), bridge link to Royal Rangers page, photo placeholder (4:3).
+3. **royal-rangers.astro** — Bevezető / Mit adunk / Korosztályok (general phrasing only, no invented age-group names) / Szülőknek (link to Kapcsolat), photo placeholder (4:3).
+4. **kapcsolat.astro** — address, email and phone as TODO placeholders (marked with code comment), Sunday service time, OSM `<iframe>` embed with no API key for Peres u. 54, building photo placeholder (4:3).
 
 ## Hosting / Azure Static Web Apps
-- `staticwebapp.config.json`: `navigationFallback` → `/404.html`, `index.html` mint alapértelmezett dokumentum.
-- `README.md`: `npm install`, `npm run dev`, `npm run build`, Azure SWA telepítés (GitHub Actions workflow, app location `/`, output location `dist`).
+- `staticwebapp.config.json`: `navigationFallback` → `/404.html`, `index.html` as default document.
+- `README.md`: `npm install`, `npm run dev`, `npm run build`, Azure SWA deploy steps (GitHub Actions workflow, app location `/`, output location `dist`).
 
-## Amit nem csinálunk
-- Nincs hitvallás / teológiai tartalom.
-- Nincs kitalált elérhetőség, statisztika, dátum a megadottakon túl.
-- Nincs API-kulcsos külső szolgáltatás (térkép, analytics).
-- 7–17 és 5–17 korhatár nem egységesítve.
+## Out of scope
+- No creed / theological content.
+- No invented contact info, statistics, or dates beyond what's given.
+- No external service requiring an API key (maps, analytics).
+- 7–17 and 5–17 age ranges not unified.
 
-## Tesztelés / ellenőrzés
-- `npm run build` sikeresen lefut, `dist/` létrejön.
-- Dev szerver böngészőben ellenőrizve: nav minden oldalon működik, linkek célba érnek, placeholder képek megjelennek megfelelő aránnyal, mobil nézet (viewport resize) rendben.
+## Testing / verification
+- `npm run build` succeeds, `dist/` produced.
+- Dev server checked in browser: nav works on every page, links resolve, placeholder images render at correct ratio, mobile viewport (resize) works.
 
-## Nyitott kérdés
-Nincs — a `CLAUDE.md` feladatleírás teljes körű, minden tartalmi döntés rögzített.
+## Open questions
+None — the `CLAUDE.md` brief is complete, all content decisions are fixed.
